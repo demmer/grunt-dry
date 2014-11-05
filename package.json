@@ -1,0 +1,32 @@
+{
+  "name": "grunt-dry",
+  "version": "0.1.0",
+  "description": "grunt scaffolding for reusable modules",
+  "main": "tasks/grunt-dry-module.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jut-io/grunt-dry-module.git"
+  },
+  "keywords": [
+    "grunt",
+    "module",
+    "scaffold"
+  ],
+  "author": "Michael Demmer <demmer@jut.io>",
+  "contributors": [
+    "Matt Tescher"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jut-io/grunt-dry-module/issues"
+  },
+  "homepage": "https://github.com/jut-io/grunt-dry-module",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-browserify": "^3.2.0",
+    "grunt-exorcise": "^0.2.0"
+  }
+}
