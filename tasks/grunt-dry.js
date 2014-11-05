@@ -48,12 +48,30 @@ module.exports = function(grunt) {
         }
     });
 
+    grunt.config.set('mochaTest', {
+        options: {
+            log: true,
+            reporter: 'spec',
+            ui: 'bdd',
+            ignoreLeaks: false,
+            globals: ['should']
+        },
+        all: {
+            src: ['specs/**/*.js']
+        }
+    });
+
     grunt.registerTask('build', [
         'browserify',
         'exorcise'
     ]);
 
+    grunt.registerTask('test', [
+        'mochaTest'
+    ]);
+
     grunt.registerTask('default', [
-        'build'
+        'build',
+        'test'
     ]);
 };
