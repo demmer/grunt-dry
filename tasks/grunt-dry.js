@@ -35,6 +35,15 @@ module.exports = function(grunt) {
             },
             src: main,
             dest: browser
+        },
+        specs: {
+            options: {
+                browserifyOptions: {
+                    bundleExternal: true
+                }
+            },
+            src: ['specs/**/*.js'],
+            dest: 'browser/specs/' + pkg.name + '.spec.js'
         }
     });
 
@@ -61,13 +70,40 @@ module.exports = function(grunt) {
         }
     });
 
+    var mochaHtml = 'browser/specs/index.html';
+    grunt.config.set('mocha', {
+        options: {
+            log: true,
+            reporter: 'Spec',
+            ui: 'bdd',
+            run: false,
+            ignoreLeaks: false,
+            globals: ['should']
+        },
+        all: {
+            src: [mochaHtml]
+        }
+    });
+
+    grunt.registerTask('mochaPrep', 'generate specs/browser/index.html for testing', function() {
+        var src = grunt.file.read('node_modules/grunt-dry/test/index.html.tmpl');
+        var dst = mochaHtml;
+        grunt.file.write(dst, grunt.template.process(src, {data: {
+            mocha: '../../node_modules/grunt-dry/node_modules/mocha',
+            'grunt_mocha': '../../node_modules/grunt-dry/node_modules/grunt-mocha',
+            pkg: pkg
+        }}));
+    });
+
     grunt.registerTask('build', [
         'browserify',
-        'exorcise'
+        'exorcise',
+        'mochaPrep'
     ]);
 
     grunt.registerTask('test', [
-        'mochaTest'
+        'mochaTest',
+        'mocha'
     ]);
 
     grunt.registerTask('default', [
