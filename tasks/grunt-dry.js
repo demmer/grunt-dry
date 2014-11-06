@@ -14,7 +14,7 @@ module.exports = function(grunt) {
     // Instead load all tasks from grunt-* packages in the
     // devDependencies.
     var dry_pkg = grunt.file.readJSON(path.join(__dirname, '../package.json'));
-    Object.keys(dry_pkg.devDependencies).forEach(function(pkg) {
+    Object.keys(dry_pkg.dependencies).forEach(function(pkg) {
         if (/grunt-/.test(pkg)) {
             grunt.task.loadTasks(path.join(__dirname, '../node_modules/', pkg, '/tasks'));
         }
