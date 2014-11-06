@@ -31,5 +31,9 @@
     "grunt-mocha": "^0.4.11",
     "grunt-mocha-test": "^0.12.2",
     "mocha": "^2.0.1"
-  }
+  },
+  "files": [
+    "tasks",
+    "test"
+  ]
 }
