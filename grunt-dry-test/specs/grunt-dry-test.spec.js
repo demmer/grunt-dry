@@ -1,7 +1,7 @@
 var expect = require('chai').expect;
 var _ = require('underscore');
 
-var module = require('../index');
+var module = require('grunt-dry-test');
 
 describe('grunt-dry-test', function() {
     it('exported a bunch of functions', function() {
