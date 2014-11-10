@@ -1,0 +1,9 @@
+{
+    "name": "grunt-dry-test",
+    "version": "1.0.0",
+    "description": "test package for grunt-dry",
+    "main": "index.js",
+    "dependencies": {
+        "underscore": "^1.7.0"
+    }
+}

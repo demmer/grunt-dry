@@ -35,5 +35,8 @@
   "files": [
     "tasks",
     "test"
-  ]
+  ],
+  "devDependencies": {
+    "underscore": "^1.7.0"
+  }
 }

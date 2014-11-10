@@ -86,11 +86,15 @@ module.exports = function(grunt) {
     });
 
     grunt.registerTask('mochaPrep', 'generate specs/browser/index.html for testing', function() {
-        var src = grunt.file.read('node_modules/grunt-dry/test/index.html.tmpl');
+        var root = grunt.config.get('pkg').grunt_dry_root || 'node_modules/grunt-dry/';
+        var src = grunt.file.read(root + '/test/index.html.tmpl');
         var dst = mochaHtml;
+
+        var modulesPath = path.relative(path.dirname(dst),
+                                        path.join(root, 'node_modules'));
         grunt.file.write(dst, grunt.template.process(src, {data: {
-            mocha: '../../node_modules/grunt-dry/node_modules/mocha',
-            'grunt_mocha': '../../node_modules/grunt-dry/node_modules/grunt-mocha',
+            mocha: modulesPath + '/mocha',
+            'grunt_mocha': modulesPath + '/grunt-mocha',
             pkg: pkg
         }}));
     });
