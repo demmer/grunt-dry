@@ -90,11 +90,9 @@ module.exports = function(grunt) {
         var src = grunt.file.read(root + '/test/index.html.tmpl');
         var dst = mochaHtml;
 
-        var modulesPath = path.relative(path.dirname(dst),
-                                        path.join(root, 'node_modules'));
         grunt.file.write(dst, grunt.template.process(src, {data: {
-            mocha: modulesPath + '/mocha',
-            'grunt_mocha': modulesPath + '/grunt-mocha',
+            modules: path.relative(path.dirname(dst),
+                                   path.join(root, 'node_modules')),
             pkg: pkg
         }}));
     });
