@@ -2,22 +2,28 @@
 <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <title>Mocha Test</title>
-    <link rel="stylesheet" href="<%= mocha %>/mocha.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="<%= modules %>/mocha/mocha.css" type="text/css" charset="utf-8" />
 </head>
 
 <body>
     <div id="mocha"></div>
-    <script src="<%= mocha%>/mocha.js" type="text/javascript" charset="utf-8"></script>
+    <script src="<%= modules %>/mocha/mocha.js" type="text/javascript" charset="utf-8"></script>
     <script type="text/javascript" charset="utf-8">
+        window.PHANTOMJS = {};
         mocha.setup('bdd');
     </script>
 
-    <script src="<%= grunt_mocha %>/phantomjs/bridge.js" type="text/javascript" charset="utf-8"></script>
-
-    <script src="./<%= pkg.name %>.spec.js"></script>
+    <script src="<%= modules %>/grunt-mocha/phantomjs/bridge.js" type="text/javascript" charset="utf-8"></script>
+    <script src="<%= modules %>/requirejs/require.js" type="text/javascript" charset="utf-8"></script>
 
     <script type="text/javascript" charset="utf-8">
-        mocha.run();
+        require.config({
+            paths: <%= require_paths %>
+        });
+
+        require(<%= specs %>, function() {
+            mocha.run();
+        });
     </script>
 </body>
 
