@@ -152,12 +152,10 @@ module.exports = function(grunt) {
     ]);
 
     grunt.registerTask('test', [
+        'build',
         'mochaTest',
         'mocha'
     ]);
 
-    grunt.registerTask('default', [
-        'build',
-        'test'
-    ]);
+    grunt.registerTask('default', 'test');
 };
