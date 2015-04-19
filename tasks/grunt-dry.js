@@ -14,7 +14,7 @@ module.exports = function(grunt) {
     var root = config.root || 'node_modules/grunt-dry/';
     var main = pkg.main;
     var browserBuild = 'browser/' + pkg.name + '.js';
-    var sourcemap = browserBuild + '.map';
+    var sourcemap = !!config.sourceMap;
 
     // Can't use grunt.loadNpmTasks here because it uses the
     // parent project's package.json file.
@@ -50,7 +50,7 @@ module.exports = function(grunt) {
                 exports: pkg.name.replace(/-/g, '_'),
                 external: externals,
                 comments: true,
-                map: true
+                map: sourcemap
             },
 
             src: main,

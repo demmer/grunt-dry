@@ -53,3 +53,11 @@ For example the following configuration would indicate that the library depends 
     }
 
 See [grunt-dry-test/gruntfile.js](./grunt-dry-test/gruntfile.js) for a complete working example.
+
+## Options
+
+The configuration supports the following options:
+
+ * *pkg*: (required) package.json contents
+ * *root*: Specifies the location of the grunt-dry task. The default is `node_modules/grunt-dry`.
+ * *sourceMap*: If true, then the package will generate a source map when building the browser bundle.
