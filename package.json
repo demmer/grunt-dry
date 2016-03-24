@@ -1,6 +1,6 @@
 {
   "name": "grunt-dry",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "grunt scaffolding for reusable modules",
   "scripts": {
     "test": "cd grunt-dry-test && grunt test"
