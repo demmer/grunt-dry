@@ -24,7 +24,14 @@ module.exports = function(grunt) {
     var dry_pkg = grunt.file.readJSON(path.join(__dirname, '../package.json'));
     Object.keys(dry_pkg.dependencies).forEach(function(pkg) {
         if (/grunt-/.test(pkg)) {
-            grunt.task.loadTasks(path.join(__dirname, '../node_modules/', pkg, '/tasks'));
+            // Handle the case where the package may have been hoisted up a directory level.
+            var taskDir = path.join(__dirname, '../node_modules/', pkg, '/tasks');
+            if (fs.existsSync(taskDir)) {
+                grunt.task.loadTasks(taskDir);
+            } else {
+                taskDir = path.join(__dirname, '../../node_modules/', pkg, '/tasks');
+                grunt.task.loadTasks(taskDir);
+            }
         }
     });
 
